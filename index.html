@@ -1,0 +1,750 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ренкорнация Безработного - Ранобэ и Аниме</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff6b6b;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark), #16213e);
+            color: var(--light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(106, 17, 203, 0.3);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.9)), 
+                        url('https://placehold.co/1200x600/1a1a2e/ffffff?text=Ренкорнация+Безработного') center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(106, 17, 203, 0.2);
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(106, 17, 203, 0.3);
+            background: rgba(106, 17, 203, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .audio-player {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .character-card {
+            overflow: hidden;
+        }
+        
+        .character-img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .character-card:hover .character-img {
+            transform: scale(1.05);
+        }
+        
+        .wiki-table {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .wiki-table th {
+            background: rgba(106, 17, 203, 0.3);
+        }
+        
+        .admin-panel {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        footer {
+            background: rgba(26, 26, 46, 0.95);
+            border-top: 1px solid rgba(106, 17, 203, 0.3);
+            padding: 40px 0;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(106, 17, 203, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-book-reader me-2"></i>
+                Ренкорнация Безработного
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reader">Ранобэ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#wiki">Википедия</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#characters">Персонажи</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#admin">Админка</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главная секция -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-3 fw-bold mb-4">
+                        Ренкорнация <span class="text-primary">Безработного</span>
+                    </h1>
+                    <p class="lead mb-4">
+                        Погрузитесь в захватывающий мир ранобэ и аниме "Ренкорнация Безработного". 
+                        Слушайте главы, изучайте персонажей и наслаждайтесь великолепной историей.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#reader" class="btn btn-primary btn-lg">
+                            <i class="fas fa-book me-2"></i>
+                            Читать Ранобэ
+                        </a>
+                        <a href="#wiki" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-graduation-cap me-2"></i>
+                            Википедия
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://placehold.co/500x600/6a11cb/ffffff?text=Обложка+Ранобэ" 
+                         alt="Обложка ранобэ" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Особенности -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Наши Возможности</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h3>Аудио Ранобэ</h3>
+                        <p class="text-muted">
+                            Слушайте главы ранобэ с профессиональной озвучкой и иллюстрациями
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Текстовый Ридер</h3>
+                        <p class="text-muted">
+                            Читайте текстовые версии глав с удобной навигацией по томам
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Википедия</h3>
+                        <p class="text-muted">
+                            Подробная информация о всех персонажах, локациях и терминах
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ридер ранобэ -->
+    <section id="reader" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center section-title">Читать Ранобэ</h2>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Навигация</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <label class="form-label">Том</label>
+                                <select class="form-select">
+                                    <option>Том 1</option>
+                                    <option>Том 2</option>
+                                    <option>Том 3</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Глава</label>
+                                <select class="form-select">
+                                    <option>Глава 1: Начало</option>
+                                    <option>Глава 2: Первая битва</option>
+                                    <option>Глава 3: Новые союзники</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5>Глава 1: Начало приключения</h5>
+                            <span class="badge bg-primary">Том 1</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Сато Маюдзуки был обычным офисным работником в Токио. Однажды, возвращаясь с работы, он погибает в автокатастрофе. Но вместо того, чтобы отправиться в загробный мир, он очнулся в теле молодого человека в странном мире...</p>
+                                    <p>Перед ним появляется богиня, которая сообщает, что он был избран для особой миссии. Она дарует ему способности и отправляет в этот фэнтезийный мир, где он должен будет выжить и найти свое предназначение.</p>
+                                    <p>Маюдзуки решает назвать себя Сато и начинает свое новое приключение. Он быстро понимает, что мир полон опасностей, но и возможностей тоже...</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="https://placehold.co/300x400/2575fc/ffffff?text=Иллюстрация" 
+                                         alt="Иллюстрация к главе" class="img-fluid rounded">
+                                </div>
+                            </div>
+                            
+                            <div class="audio-player">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <h6><i class="fas fa-music me-2"></i>Аудио версия главы</h6>
+                                    <span class="badge bg-success">Доступно</span>
+                                </div>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar" role="progressbar" style="width: 35%"></div>
+                                </div>
+                                <div class="d-flex align-items-center gap-3">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <button class="btn btn-outline-light">
+                                        <i class="fas fa-pause"></i>
+                                    </button>
+                                    <div class="flex-grow-1">
+                                        <small>12:45 / 35:20</small>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-sm btn-outline-light">
+                                            <i class="fas fa-volume-up"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <button class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-left me-2"></i>Предыдущая глава
+                            </button>
+                            <button class="btn btn-primary">
+                                Следующая глава<i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Википедия -->
+    <section id="wiki" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Википедия</h2>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Поиск по википедии...">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <select class="form-select">
+                        <option>Все категории</option>
+                        <option>Персонажи</option>
+                        <option>Локации</option>
+                        <option>Термины</option>
+                        <option>Предметы</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="wiki-table">
+                <table class="table table-dark table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Категория</th>
+                            <th>Описание</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Сато Маюдзуки</td>
+                            <td>Персонаж</td>
+                            <td>Главный герой, бывший офисный работник, получивший новые способности</td>
+                            <td><span class="badge bg-success">Готово</span></td>
+                        </tr>
+                        <tr>
+                            <td>Королевство Фреон</td>
+                            <td>Локация</td>
+                            <td>Первое королевство, которое посетил Сато после перерождения</td>
+                            <td><span class="badge bg-warning">В процессе</span></td>
+                        </tr>
+                        <tr>
+                            <td>Система уровней</td>
+                            <td>Термин</td>
+                            <td>Механизм развития персонажей в мире ранобэ</td>
+                            <td><span class="badge bg-success">Готово</span></td>
+                        </tr>
+                        <tr>
+                            <td>Магический кристалл</td>
+                            <td>Предмет</td>
+                            <td>Редкий артефакт, дающий владельцу магические способности</td>
+                            <td><span class="badge bg-danger">Черновик</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Персонажи -->
+    <section id="characters" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center section-title">Персонажи</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card character-card">
+                        <img src="https://placehold.co/400x250/6a11cb/ffffff?text=Сато" 
+                             class="card-img-top character-img" alt="Сато">
+                        <div class="card-body">
+                            <h5 class="card-title">Сато Маюдзуки</h5>
+                            <p class="card-text">
+                                Главный герой. Бывший офисный работник, переродившийся в фэнтезийном мире.
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-primary">Протагонист</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card character-card">
+                        <img src="https://placehold.co/400x250/2575fc/ffffff?text=Панделла" 
+                             class="card-img-top character-img" alt="Панделла">
+                        <div class="card-body">
+                            <h5 class="card-title">Панделла</h5>
+                            <p class="card-text">
+                                Принцесса королевства Фреон. Стала первой спутницей Сато.
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-info">Спутница</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card character-card">
+                        <img src="https://placehold.co/400x250/ff6b6b/ffffff?text=Тиана" 
+                             class="card-img-top character-img" alt="Тиана">
+                        <div class="card-body">
+                            <h5 class="card-title">Тиана</h5>
+                            <p class="card-text">
+                                Воительница из племени зверолюдей. Присоединилась к отряду Сато.
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-warning">Союзник</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Админка -->
+    <section id="admin" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Административная панель</h2>
+            <div class="admin-panel">
+                <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content" type="button">
+                            <i class="fas fa-book me-2"></i>Контент
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button">
+                            <i class="fas fa-users me-2"></i>Пользователи
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button">
+                            <i class="fas fa-cog me-2"></i>Настройки
+                        </button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="adminTabContent">
+                    <div class="tab-pane fade show active" id="content" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Добавить новую главу</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label class="form-label">Название главы</label>
+                                                <input type="text" class="form-control" placeholder="Введите название">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Том</label>
+                                                <select class="form-select">
+                                                    <option>Том 1</option>
+                                                    <option>Том 2</option>
+                                                    <option>Том 3</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Текст главы</label>
+                                                <textarea class="form-control" rows="5" placeholder="Введите текст главы"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Иллюстрация</label>
+                                                <input type="file" class="form-control">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Добавить главу</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Добавить персонажа</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label class="form-label">Имя персонажа</label>
+                                                <input type="text" class="form-control" placeholder="Введите имя">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Роль</label>
+                                                <select class="form-select">
+                                                    <option>Протагонист</option>
+                                                    <option>Антагонист</option>
+                                                    <option>Спутник</option>
+                                                    <option>Нейтральный</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Описание</label>
+                                                <textarea class="form-control" rows="3" placeholder="Введите описание"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Изображение</label>
+                                                <input type="file" class="form-control">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Добавить персонажа</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="users" role="tabpanel">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Управление пользователями</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Пользователь</th>
+                                                <th>Email</th>
+                                                <th>Роль</th>
+                                                <th>Статус</th>
+                                                <th>Действия</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Администратор</td>
+                                                <td>admin@site.com</td>
+                                                <td>Админ</td>
+                                                <td><span class="badge bg-success">Активен</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Модератор</td>
+                                                <td>mod@site.com</td>
+                                                <td>Модератор</td>
+                                                <td><span class="badge bg-warning">Ожидает</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="settings" role="tabpanel">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Настройки сайта</h5>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label class="form-label">Название сайта</label>
+                                        <input type="text" class="form-control" value="Ренкорнация Безработного">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Описание сайта</label>
+                                        <textarea class="form-control" rows="3">Сайт посвящен ранобэ и аниме "Ренкорнация Безработного"</textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Тема оформления</label>
+                                        <select class="form-select">
+                                            <option>Темная</option>
+                                            <option>Светлая</option>
+                                            <option>Автоматически</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notifications" checked>
+                                        <label class="form-check-label" for="notifications">
+                                            Включить уведомления
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Сохранить настройки</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4>Ренкорнация Безработного</h4>
+                    <p>
+                        Сайт посвящен популярному ранобэ и аниме. Здесь вы можете читать главы, 
+                        слушать аудио версии и изучать персонажей.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5>Навигация</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-decoration-none">Главная</a></li>
+                        <li><a href="#reader" class="text-decoration-none">Ранобэ</a></li>
+                        <li><a href="#wiki" class="text-decoration-none">Википедия</a></li>
+                        <li><a href="#characters" class="text-decoration-none">Персонажи</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5>Документация</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none">API Документация</a></li>
+                        <li><a href="#" class="text-decoration-none">REST API</a></li>
+                        <li><a href="#" class="text-decoration-none">GraphQL</a></li>
+                        <li><a href="#" class="text-decoration-none">Swagger UI</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5>Контакты</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i> admin@site.com</li>
+                        <li><i class="fas fa-bug me-2"></i> Сообщить об ошибке</li>
+                        <li><i class="fas fa-question-circle me-2"></i> Поддержка</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2023 Ренкорнация Безработного. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Простая анимация для аудио плеера
+        document.addEventListener('DOMContentLoaded', function() {
+            const playButton = document.querySelector('.audio-player .btn-primary');
+            const pauseButton = document.querySelector('.audio-player .btn-outline-light');
+            
+            playButton.addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-pause"></i>';
+                this.classList.remove('btn-primary');
+                this.classList.add('btn-danger');
+            });
+            
+            pauseButton.addEventListener('click', function() {
+                playButton.innerHTML = '<i class="fas fa-play"></i>';
+                playButton.classList.remove('btn-danger');
+                playButton.classList.add('btn-primary');
+            });
+            
+            // Плавная прокрутка для навигации
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
